@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剑桥雅思听力音频集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            color: #555;
+        }
+        
+        .cloud-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        .pdf-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+        }
+        
+        .pdf-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .pdf-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pdf-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: #fff5f5;
+        }
+        
+        .pdf-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .pdf-name {
+            flex: 1;
+            font-size: 0.9em;
+            word-wrap: break-word;
+        }
+        
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .audio-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .audio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .audio-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            word-wrap: break-word;
+        }
+        
+        audio {
+            width: 100%;
+            outline: none;
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background-color: #667eea;
+        }
+        
+        .section-divider {
+            margin: 40px 0 30px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .audio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pdf-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #999;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎧 剑桥雅思听力音频集</h1>
+        <div class="subtitle">Cambridge IELTS Listening Audio Collection</div>
+        <div class="stats">
+            📚 共收录 <strong>48</strong> 个音频文件 | 📄 <strong>3</strong> 个PDF文件 | 包含剑桥雅思16、17、18
+            <br>
+            <span class="cloud-badge">☁️ 云端版 - 随时随地访问</span>
+        </div>
+        <div class="pdf-section">
+            <div class="pdf-title">📄 剑桥雅思16 - PDF资料下载</div>
+            <div class="pdf-grid">
+                <a href="https://hwy0507.github.io/ielts-audio/剑桥雅思16/剑桥雅思真题16 .pdf" class="pdf-link" download target="_blank">
+                    <span class="pdf-icon">📕</span>
+                    <span class="pdf-name">剑桥雅思真题16 .pdf</span>
+                </a>
+            </div>
+        </div>
+        <div class="section-divider">🎵 剑桥雅思 16 - 听力音频</div>
+        <div class="audio-grid">
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 1 Part 1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 1 Part 1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 1 Part 2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 1 Part 2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 1 Part 3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 1 Part 3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 1 Part 4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 1 Part 4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 2 Part 1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 2 Part 1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 2 Part 2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 2 Part 2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 2 Part 3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 2 Part 3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 2 Part 4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 2 Part 4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 3 Part 1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 3 Part 1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 3 Part 2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 3 Part 2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 3 Part 3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 3 Part 3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 3 Part 4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 3 Part 4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 4 Part 1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 4 Part 1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 4 Part 2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 4 Part 2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 4 Part 3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 4 Part 3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思16 - Test 4 Part 4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思16/音频/Test 4 Part 4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+        </div>
+        <div class="pdf-section">
+            <div class="pdf-title">📄 剑桥雅思17 - PDF资料下载</div>
+            <div class="pdf-grid">
+                <a href="https://hwy0507.github.io/ielts-audio/剑桥雅思17/剑桥雅思17-公众号：雅思托福备考指南.pdf" class="pdf-link" download target="_blank">
+                    <span class="pdf-icon">📕</span>
+                    <span class="pdf-name">剑桥雅思17-公众号：雅思托福备考指南.pdf</span>
+                </a>
+            </div>
+        </div>
+        <div class="section-divider">🎵 剑桥雅思 17 - 听力音频</div>
+        <div class="audio-grid">
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t1_audio1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t1_audio1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t1_audio2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t1_audio2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t1_audio3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t1_audio3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t1_audio4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t1_audio4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t2_audio1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t2_audio1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t2_audio2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t2_audio2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t2_audio3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t2_audio3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t2_audio4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t2_audio4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t3_audio1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t3_audio1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t3_audio2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t3_audio2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t3_audio3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t3_audio3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t3_audio4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t3_audio4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t4_audio1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t4_audio1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t4_audio2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t4_audio2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t4_audio3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t4_audio3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思17 - ELT_IELTS17_t4_audio4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思17/音频/ELT_IELTS17_t4_audio4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+        </div>
+        <div class="pdf-section">
+            <div class="pdf-title">📄 剑桥雅思18 - PDF资料下载</div>
+            <div class="pdf-grid">
+                <a href="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思真题18.pdf" class="pdf-link" download target="_blank">
+                    <span class="pdf-icon">📕</span>
+                    <span class="pdf-name">剑桥雅思真题18.pdf</span>
+                </a>
+            </div>
+        </div>
+        <div class="section-divider">🎵 剑桥雅思 18 - 听力音频</div>
+        <div class="audio-grid">
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 1 Part 1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 1/Test 1 Part 1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 1 Part 2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 1/Test 1 Part 2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 1 Part 3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 1/Test 1 Part 3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 1 Part 4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 1/Test 1 Part 4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 2 Part 1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 2/Test 2 Part 1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 2 Part 2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 2/Test 2 Part 2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 2 Part 3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 2/Test 2 Part 3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 2 Part 4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 2/Test 2 Part 4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 3 Part 1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 3/Test 3 Part 1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 3 Part 2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 3/Test 3 Part 2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 3 Part 3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 3/Test 3 Part 3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 3 Part 4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 3/Test 3 Part 4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 4 Part 1.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 4/Test 4 Part 1.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 4 Part 2.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 4/Test 4 Part 2.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 4 Part 3.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 4/Test 4 Part 3.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            <div class="audio-card">
+                <div class="audio-title">剑桥雅思18 - Test 4 Part 4.mp3</div>
+                <audio controls preload="metadata">
+                    <source src="https://hwy0507.github.io/ielts-audio/剑桥雅思18/剑桥雅思18听力音频/Test 4/Test 4 Part 4.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🌟 祝您雅思备考顺利！</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">生成时间: 2025年10月23日</p>
+            <p style="margin-top: 5px; font-size: 0.85em; color: #bbb;">☁️ 云端版 - 资源托管于云端服务器</p>
+        </div>
+    </div>
+</body>
+</html>
